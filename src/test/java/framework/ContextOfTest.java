@@ -1,5 +1,8 @@
 package framework;
 
+import framework.actors.Actor;
+import org.junit.Assert;
+
 import java.io.IOException;
 
 /**
@@ -11,38 +14,31 @@ public class ContextOfTest {
     public static ConfigReader sutConfiguration;
     public static ConfigReader testConfiguration;
 
-    public static String sutUrl;
-
-    // these are here so as to be highly visible to the code editor
-    // update them if you place the properties files somewhere else
-    private final String LOCATION_SUT_CONFIG_FILE = "configuration/systemUnderTest.properties";
-    private final String LOCATION_TEST_CONFIG_FILE = "configuration/testFramework.properties";
-    private final String LOCATION_REPORT_CONFIG_FILE = "configuration/reporting.properties";
+    public static Actor.ActorType actorType;
+    public static Actor actor;
+    public static String sutBaseURL;
+    public static boolean catchBrowserLogs = false;
 
     /**
+     * ***********************************************************************************************************************
      * The following private declaration of one of my kind and the subsequent private constructor ensure that I am a Singleton
      * Initialisation of me does not work if it is in the constructor, it has to be here
      */
-    private static ContextOfTest theContext;
+    private static ContextOfTest me = new ContextOfTest();
 
-    static {
+    private ContextOfTest() {
         try {
-            theContext = new ContextOfTest();
-        } catch (IOException e) {
+            testConfiguration = new ConfigReader("src/test/configuration/testFramework.properties");
+
+            sutConfiguration = new ConfigReader(testConfiguration.getProperty("sutConfigPath"));
+
+            actorType = Actor.ActorType.valueOf(testConfiguration.getProperty("actorName").toUpperCase());
+
+            // this system property is required by the fancy HTML reporter from https://gitlab.com/monochromata-de/cucumber-reporting-plugin
+            System.setProperty("cucumber.reporting.config.file", testConfiguration.getProperty("reportConfigFile"));
+        } catch (IOException | NoSuchFieldException e) {
             e.printStackTrace();
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
+            Assert.fail();
         }
-    }
-
-    private ContextOfTest() throws IOException, NoSuchFieldException {
-
-        sutConfiguration = new ConfigReader(LOCATION_SUT_CONFIG_FILE);
-        testConfiguration = new ConfigReader(LOCATION_TEST_CONFIG_FILE);
-
-        sutUrl = sutConfiguration.getProperty("protocol") + "://" + sutConfiguration.getProperty("domainName");
-
-        // this system property is required by the fancy HTML reporter from https://gitlab.com/monochromata-de/cucumber-reporting-plugin
-        System.setProperty("cucumber.reporting.config.file", LOCATION_REPORT_CONFIG_FILE);
     }
 }

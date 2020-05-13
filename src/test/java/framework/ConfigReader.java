@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigReader {
+    private final String propertiesFileName;
     private Properties properties;
-    private String propertiesFileName;
 
     /**
      * Constructor. Reads and remembers the properties in the file
@@ -16,7 +16,7 @@ public class ConfigReader {
      *
      * @param relativePath - relative to the root of the project
      *                     - eg configuration/systemUnderTest.properties
-     * @throws IOException
+     * @throws IOException - if the given file can't be opened, or read
      */
     public ConfigReader(String relativePath) throws IOException {
         propertiesFileName = relativePath;
@@ -40,7 +40,7 @@ public class ConfigReader {
     /**
      * get the configure value for this key. To use this successfully, you will need to know the contents of the relevant properties file
      *
-     * @param name - name e.g. domainName
+     * @param name - name e.g. uiDomainName
      * @return - the value for that name
      * @throws NoSuchFieldException - if the given name is not found in the config file
      */

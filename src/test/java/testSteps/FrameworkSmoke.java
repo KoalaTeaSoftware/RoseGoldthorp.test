@@ -1,4 +1,4 @@
-package stepDefs;
+package testSteps;
 
 import framework.ContextOfScenario;
 import framework.ContextOfTest;
@@ -13,9 +13,9 @@ public class FrameworkSmoke {
         System.out.println("started step " + arg0);
 
         // go the home page indicated in the configuration
-        ContextOfScenario.getDriver().get(ContextOfTest.sutUrl);
+        ContextOfScenario.driver.get(ContextOfTest.sutBaseURL);
 
-        HomePage homePage = new HomePage(ContextOfScenario.getDriver());
+        HomePage homePage = new HomePage(ContextOfScenario.driver);
 
         System.out.printf("Page has title :%s:\n", homePage.getPageTitle());
 
