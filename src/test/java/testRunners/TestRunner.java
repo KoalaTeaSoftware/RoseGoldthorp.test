@@ -1,4 +1,4 @@
-package TestRunners;
+package testRunners;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -19,7 +19,7 @@ import org.junit.runner.RunWith;
                 // see https://gitlab.com/monochromata-de/cucumber-reporting-plugin
                 "de.monochromata.cucumber.report.PrettyReports:target/"
         }
-        , tags = "@framework"
+        , tags = "@siteSmoke"
 //        ,dryRun = true
 )
 
