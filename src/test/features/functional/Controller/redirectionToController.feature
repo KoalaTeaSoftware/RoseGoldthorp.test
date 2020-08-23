@@ -15,11 +15,17 @@ Feature: Redirection To Controller
     And I see the body section
     And I see the footer section
     Examples:
-      | chapter | ExpectedTitle  | comment                |
-      |         | Rose Goldthorp | home page              |
-      | home    | Home           | specifically home      |
-      | HOME    | Home           | case insensitive input |
-      | HoME    | Home           | case insensitive input |
+      | chapter              | ExpectedTitle          | comment                |
+      |                      | Rose Goldthorp         | home page              |
+      | home                 | Home                   | specifically home      |
+      | HOME                 | Home                   | case insensitive input |
+      | HoME                 | Home                   | case insensitive input |
+      | advertainment        | Advertainment          |                        |
+      | socialMediaMarketeer | Social Media Marketeer |                        |
+      | filmmaker            | Film Maker             |                        |
+      | media                | Media                  |                        |
+      | about                | About                  |                        |
+      | CONTACT              | Contact                |                        |
 
   Scenario Outline: Visit unknown chapters
     Given I am on the "<chapter>" page
