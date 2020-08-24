@@ -1,4 +1,4 @@
-@functional
+@functional @wip
 Feature: The Bestiary
   The bestiary is an ever-growing list of mildly comic articles on fantastic creatures
   It is built from a set of posts in the blog

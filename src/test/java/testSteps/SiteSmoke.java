@@ -1,6 +1,5 @@
 package testSteps;
 
-import framework.ContextOfScenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import objects.ui.pages.AllPages;
@@ -11,7 +10,7 @@ public class SiteSmoke {
     @Then("The page title is {string}")
     public void thePageTitleIs(String expectedTitle) {
 
-        AllPages page = new AllPages(ContextOfScenario.driver);
+        AllPages page = new AllPages();
 
         System.out.println("In the actual test, the page title is :" + page.title + ":");
 
@@ -20,21 +19,21 @@ public class SiteSmoke {
 
     @Then("I see the banner section")
     public void iSeeTheBannerSection() {
-        AllPages page = new AllPages(ContextOfScenario.driver);
+        AllPages page = new AllPages();
 
         Assert.assertNotNull(page.furniture);
     }
 
     @And("I see the body section")
     public void iSeeTheBodySection() {
-        AllPages page = new AllPages(ContextOfScenario.driver);
+        AllPages page = new AllPages();
 
         Assert.assertNotNull(page.main);
     }
 
     @And("I see the footer section")
     public void iSeeTheFooterSection() {
-        AllPages page = new AllPages(ContextOfScenario.driver);
+        AllPages page = new AllPages();
 
         Assert.assertNotNull(page.footer);
     }

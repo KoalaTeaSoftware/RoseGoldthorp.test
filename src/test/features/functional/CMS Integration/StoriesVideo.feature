@@ -1,4 +1,4 @@
-@functional
+@functional @wip
 Feature: Stories Video
   As any user
   So that I can enjoy the video on this page

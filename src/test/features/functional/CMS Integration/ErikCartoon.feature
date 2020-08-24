@@ -1,4 +1,4 @@
-@functional
+@functional @wip
 Feature: Erik Cartoon
   As a user
   So that I can enjoy the Erik cartoon

@@ -1,4 +1,4 @@
-@standards @functional
+@standards @functional @wip
 Feature: Standards Compliance
 
   Scenario Outline: Check Browser Console Errors

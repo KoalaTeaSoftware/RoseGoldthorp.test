@@ -1,4 +1,4 @@
-@access
+@access @wip
 Feature: Erik Cartoon
   As a user with reduced visual ability
   So that I can enjoy the Erik cartoon

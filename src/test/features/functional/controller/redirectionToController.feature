@@ -1,4 +1,4 @@
-@controller
+@functional @controller
 Feature: Redirection To Controller
   As a developer
   So that I can ensure that all page requests are correctly handled
@@ -15,17 +15,16 @@ Feature: Redirection To Controller
     And I see the body section
     And I see the footer section
     Examples:
-      | chapter              | ExpectedTitle          | comment                |
-      |                      | Rose Goldthorp         | home page              |
-      | home                 | Home                   | specifically home      |
-      | HOME                 | Home                   | case insensitive input |
-      | HoME                 | Home                   | case insensitive input |
-      | advertainment        | Advertainment          |                        |
-      | socialMediaMarketeer | Social Media Marketeer |                        |
-      | filmmaker            | Film Maker             |                        |
-      | media                | Media                  |                        |
-      | about                | About                  |                        |
-      | CONTACT              | Contact                |                        |
+      | chapter          | ExpectedTitle          | comment                |
+      |                  | Rose Goldthorp         | home page              |
+      | home             | Home                   | specifically home      |
+      | HOME             | Home                   | case insensitive input |
+      | HoME             | Home                   | case insensitive input |
+      | contentMarketing | Content Marketing      |                        |
+      | socialMedia      | Social Media Marketing |                        |
+      | pricing          | Pricing                |                        |
+      | about            | About                  |                        |
+      | CONTACT          | Contact                |                        |
 
   Scenario Outline: Visit unknown chapters
     Given I am on the "<chapter>" page
