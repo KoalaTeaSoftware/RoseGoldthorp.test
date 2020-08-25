@@ -12,7 +12,7 @@ public class Chapters {
 
         Assert.assertTrue(
                 String.format("There should be %d packages, there are %d", minNumPackages, page.packageCount()),
-                (minNumPackages >= page.packageCount())
+                (minNumPackages <= page.packageCount())
         );
     }
 }

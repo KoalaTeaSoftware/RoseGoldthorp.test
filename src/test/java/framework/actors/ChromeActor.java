@@ -71,6 +71,15 @@ public class ChromeActor extends Actor {
         } catch (NoSuchFieldException e) {
             // do nothing if this property has not been defined
         }
+
+        try {
+            if (ContextOfTest.testConfiguration.getProperty("windowSize").length() > 0)
+                options.addArguments("--window-size=" + ContextOfTest.testConfiguration.getProperty("windowSize"));
+        } catch (NoSuchFieldException e) {
+            // do nothing if this property has not been defined
+        }
+
+
         options.setPageLoadStrategy(pls);
         options.addArguments("enable-automation"); // https://stackoverflow.com/a/43840128/1689770
 //                options.addArguments("--no-sandbox"); //https://stackoverflow.com/a/50725918/1689770

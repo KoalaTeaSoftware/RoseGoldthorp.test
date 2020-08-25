@@ -1,16 +1,13 @@
 package objects.ui.pages;
 
 import framework.ContextOfScenario;
+import framework.helpers.WebElementHelpers;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 
-@SuppressWarnings("FieldCanBeLocal")
 public class AllPages {
-    private final By furnitureLocator = By.xpath("/html/body/section[@id='furniture']");
-    private final By mainLocator = By.xpath("/html/body/section[@id='page-content']");
-    private final By footerLocator = By.xpath("/html/body/section[@id='footer']");
 
     public final String title;
     public final WebElement furniture;
@@ -18,8 +15,12 @@ public class AllPages {
     public final WebElement footer;
 
     public AllPages() {
+        final By furnitureLocator = By.xpath("/html/body/section[@id='furniture']");
+        final By mainLocator = By.xpath("/html/body/section[@id='page-content']");
+        final By footerLocator = By.xpath("/html/body/section[@id='footer']");
+
         try {
-            framework.helpers.WebElement.waitForElementToBeDefined(ContextOfScenario.driver, footerLocator, 5);
+            WebElementHelpers.waitForElementToBeDefined(ContextOfScenario.driver, footerLocator, 5);
         } catch (TimeoutException e) {
             Assert.fail("The page did not fully load (unable to find element using :" + footerLocator + ":");
         }

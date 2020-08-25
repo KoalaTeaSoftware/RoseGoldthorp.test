@@ -23,7 +23,7 @@ Feature: Redirection To Controller
       | contentMarketing | Content Marketing      |                        |
       | socialMedia      | Social Media Marketing |                        |
       | pricing          | Pricing                |                        |
-      | about            | About                  |                        |
+      | about            | About Me               |                        |
       | CONTACT          | Contact                |                        |
 
   Scenario Outline: Visit unknown chapters
