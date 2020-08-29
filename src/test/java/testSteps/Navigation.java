@@ -8,6 +8,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import objects.ui.pages.AllPages;
 import objects.ui.widgets.SiteNavWidget;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.testng.asserts.SoftAssert;
 
@@ -19,14 +20,13 @@ public class Navigation {
     @Given("I am on the {string} page")
     public void i_am_on_the_page(String string) {
         ContextOfScenario.driver.get(ContextOfTest.sutBaseURL + "/" + string);
-        AllPages page = new AllPages(); // wait until the page has bee drawn
+        //noinspection unused
+        AllPages page = new AllPages(); // make it wait for the page to be drawn
     }
 
     @Then("I follow nav links and see the correct page")
     public void iFollowNavLinksAndSeeTheCorrectPage(DataTable dt) {
         List<Map<String, String>> list = dt.asMaps(String.class, String.class);
-        final int len = list.size();
-
 
         SiteNavWidget navWidget = new SiteNavWidget();
 
@@ -53,6 +53,9 @@ public class Navigation {
     }
 
     @And("there are {int} items visible on the menu")
-    public void thereAreItemsVisibleOnTheMenu(int arg0) {
+    public void thereAreItemsVisibleOnTheMenu(int expectedNumberOfNavItems) {
+        SiteNavWidget navWidget = new SiteNavWidget();
+
+        Assert.assertEquals("Unexpected number of menu items", expectedNumberOfNavItems, navWidget.countNavButtons());
     }
 }

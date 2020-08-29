@@ -131,8 +131,8 @@ public abstract class Actor {
      * This one works for all of the browsers
      * Override it for the API Actor
      *
-     * @return
-     * @throws NoSuchFieldException
+     * @return the base URL of the current page
+     * @throws NoSuchFieldException - you guess
      */
     public String deriveBaseUrl() throws NoSuchFieldException {
         return ContextOfTest.sutConfiguration.getProperty("uiProtocol") + "://" + ContextOfTest.sutConfiguration.getProperty("uiDomainName");
@@ -142,7 +142,7 @@ public abstract class Actor {
      * Use this with the API Actor is the operating Actor, so that the response can be analysed
      * Otherwise (e.g. for th browser actors) the response will be null (initial value of the httpResponse)
      *
-     * @return
+     * @return the entire response rom the call
      */
     public CloseableHttpResponse getResponse() {
         return httpResponse;

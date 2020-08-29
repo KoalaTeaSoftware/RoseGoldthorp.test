@@ -19,7 +19,9 @@ import org.junit.runner.RunWith;
                 // see https://gitlab.com/monochromata-de/cucumber-reporting-plugin
                 "de.monochromata.cucumber.report.PrettyReports:target/"
         }
-        , tags = "@functional  and ( not (@wip or @smoke))"
+        , tags = "@functional  and (not (@wip or @smoke))"
+//        , tags = "@testFramework"
+//        , tags = "@smoke and @site"
 //        ,dryRun = true
 )
 

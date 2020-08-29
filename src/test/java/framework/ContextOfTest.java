@@ -24,7 +24,7 @@ public class ContextOfTest {
      * The following private declaration of one of my kind and the subsequent private constructor ensure that I am a Singleton
      * Initialisation of me does not work if it is in the constructor, it has to be here
      */
-    private static ContextOfTest me = new ContextOfTest();
+    private static final ContextOfTest me = new ContextOfTest();
 
     private ContextOfTest() {
         try {

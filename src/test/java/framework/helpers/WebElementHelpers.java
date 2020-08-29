@@ -12,9 +12,9 @@ import java.time.Duration;
 public class WebElementHelpers {
 
     /**
-     * @param myDriver
-     * @param locator
-     * @param milliSeconds
+     * @param myDriver     - probably get this from the test context
+     * @param locator      - the thing used to locat the elementthat you will wait to see
+     * @param milliSeconds - how long to wait
      */
     public static void waitForElementToBeDefined(WebDriver myDriver, By locator, long milliSeconds) throws TimeoutException {
         WebDriverWait wait = new WebDriverWait(myDriver, Duration.ofMillis(milliSeconds));

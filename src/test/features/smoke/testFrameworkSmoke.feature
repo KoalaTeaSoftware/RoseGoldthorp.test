@@ -1,4 +1,4 @@
-@framework
+@smoke @testFramework
 Feature: Framework Smoke Test
   As a test engineer
   So that I can tell if the test framework works

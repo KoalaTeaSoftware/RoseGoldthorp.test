@@ -1,5 +1,5 @@
 @functional @nav
-Feature: Site Navigation
+Feature: Site Navbar
   As any user
   So that I can get around the site
   I want the navigation bar to work correctly
@@ -13,9 +13,9 @@ Feature: Site Navigation
       | Social Media      | Social Media Marketing |
       | Pricing           | Pricing                |
       | About             | About Me               |
-      | Contact           | Contact                |
-    # This gives additional confidence that the previous step was sufficient
-#    And there are 6 items visible on the menu
+      | Contact           | Contact Me             |
+# This gives additional confidence that the previously listed data was sufficient
+    And there are 6 items visible on the menu
     Examples:
       | startingAt       |
       |                  |

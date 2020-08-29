@@ -28,7 +28,7 @@ Example response:
 
 public class RandomPostcodeResponse extends JsonApiResponse {
 
-    private JSONObject responseAsJson = null;
+    private JSONObject responseAsJson;
 
     public RandomPostcodeResponse(CloseableHttpResponse response) {
         super(response);

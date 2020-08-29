@@ -8,7 +8,7 @@ import java.util.Properties;
 
 public class ConfigReader {
     private final String propertiesFileName;
-    private Properties properties;
+    private final Properties properties;
 
     /**
      * Constructor. Reads and remembers the properties in the file
