@@ -5,4 +5,4 @@ Feature: Pricing
 
   Scenario: Visit the page
     Given I am on the "pricing" page
-    Then There are more than 1 packages visible
+    Then the pricing page shows more than 1 packages

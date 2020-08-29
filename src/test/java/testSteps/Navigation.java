@@ -31,7 +31,7 @@ public class Navigation {
         SiteNavWidget navWidget = new SiteNavWidget();
 
         SoftAssert softAssert = new SoftAssert();
-
+        String lastPlace = "";
         for (Map<String, String> stringStringMap : list) {
             String linkText = stringStringMap.get("linkText");
             String expectedPage = stringStringMap.get("expectedPageTitle");
@@ -47,7 +47,16 @@ public class Navigation {
 
             AllPages newPage = new AllPages();
 
-            softAssert.assertEquals(newPage.title, expectedPage, "Unexpected title of page");
+            softAssert.assertEquals(newPage.pageTitle, expectedPage, "Unexpected title of page");
+            if (lastPlace.length() > 0) {
+                /*
+                To test all the links on the page suggested by the scenario outline, use the back button
+                Otherwise, wherever you start, to go to the home and then test the next page, then from that to the next, and so on.
+                First time around, however, there will be no place to go back to
+                 */
+                ContextOfTest.actor.getDriver().navigate().back();
+            }
+            lastPlace = linkText;
         }
         softAssert.assertAll("Step Fails");
     }

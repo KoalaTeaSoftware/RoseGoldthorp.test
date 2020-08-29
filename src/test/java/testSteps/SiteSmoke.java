@@ -12,9 +12,9 @@ public class SiteSmoke {
 
         AllPages page = new AllPages();
 
-        System.out.println("In the actual test, the page title is :" + page.title + ":");
+        System.out.println("In the actual test, the page title is :" + page.pageTitle + ":");
 
-        Assert.assertEquals("The page title is not as expected", expectedTitle, page.title);
+        Assert.assertEquals("The page title is not as expected", expectedTitle, page.pageTitle);
     }
 
     @Then("I see the banner section")

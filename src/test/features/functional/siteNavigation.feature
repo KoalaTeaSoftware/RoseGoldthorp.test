@@ -14,8 +14,10 @@ Feature: Site Navbar
       | Pricing           | Pricing                |
       | About             | About Me               |
       | Contact           | Contact Me             |
-# This gives additional confidence that the previously listed data was sufficient
+    # This gives additional confidence that the previously listed data was sufficient
     And there are 6 items visible on the menu
+    # just to double-check that pages get fully drawn
+    And I see the footer section
     Examples:
       | startingAt       |
       |                  |

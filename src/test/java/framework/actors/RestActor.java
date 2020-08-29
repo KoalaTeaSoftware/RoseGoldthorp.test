@@ -1,7 +1,7 @@
 package framework.actors;
 
+import framework.ContextOfScenario;
 import framework.ContextOfTest;
-import io.cucumber.java.Scenario;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -60,16 +60,15 @@ public class RestActor extends Actor {
     /**
      * For this type of Actor, just dump the whole thing into the HTML report
      *
-     * @param scenario - found in the scenario context
-     * @param label    - what you want to se written in the report
+     * @param label - what you want to se written in the report
      */
     @Override
-    public void embedScreenShot(Scenario scenario, String label) {
+    public void embedScreenShot(String label) {
         try {
-            scenario.write(EntityUtils.toString(httpResponse.getEntity(), "UTF-8"));
+            ContextOfScenario.scenario.write(EntityUtils.toString(httpResponse.getEntity(), "UTF-8"));
         } catch (IOException e) {
             e.printStackTrace();
-            scenario.write("Failed to interpret the response:" + e.getMessage() + ":");
+            ContextOfScenario.scenario.write("Failed to interpret the response:" + e.getMessage() + ":");
             Assert.fail();
         }
     }

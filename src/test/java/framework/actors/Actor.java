@@ -2,13 +2,16 @@ package framework.actors;
 
 import framework.ContextOfScenario;
 import framework.ContextOfTest;
-import io.cucumber.java.Scenario;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public abstract class Actor {
 
@@ -61,17 +64,16 @@ public abstract class Actor {
     /**
      * For browsers this is what you think, for an API it will grab the response
      *
-     * @param scenario - found in the scenario context
-     * @param label    - what you want to se written in the report
+     * @param label - what you want to se written in the report
      */
-    public void embedScreenShot(Scenario scenario, String label) {
-        scenario.write(label);
+    public void embedScreenShot(String label) {
+        ContextOfScenario.scenario.write(label);
 
         TakesScreenshot ts = (TakesScreenshot) ContextOfScenario.driver;
         byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
 
         // whilst this is complaining the embed is deprecated, it still works
-        scenario.embed(screenshot, "image/png");
+        ContextOfScenario.scenario.embed(screenshot, "image/png");
     }
 
     /**
@@ -125,6 +127,11 @@ public abstract class Actor {
         getDriver().get(fullURL);
 
         awaitPageLoad(pageLoadWait);
+    }
+
+    public void waitForBrowser(long milliSeconds) {
+        WebDriverWait wait = new WebDriverWait(ContextOfTest.actor.getDriver(), Duration.ofMillis(milliSeconds));
+        wait.until(ExpectedConditions.jsReturnsValue("return document.readyState==\"complete\";"));
     }
 
     /**
