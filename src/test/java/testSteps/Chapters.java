@@ -73,16 +73,16 @@ public class Chapters {
         int len = listOfLinks.size();
 
         for (int i = 0; i < len; i++) {
-            System.out.println("Checking link " + i);
             WebElement link = listOfLinks.get(i);
             String expectedTitle = link.getText();
             link.click();
+
             FilmDetailsPage filmDetailsPage = new FilmDetailsPage();
             softAssert.assertEquals(filmDetailsPage.pageTitle, expectedTitle);
             softAssert.assertEquals(filmDetailsPage.filmTitle, expectedTitle);
 
             ContextOfTest.actor.getDriver().navigate().back();
-            ContextOfTest.actor.waitForBrowser(100);
+            ContextOfTest.actor.waitForBrowser(5000);
             aboutPage.refresh();
             listOfLinks = aboutPage.findAllOnReleaseTextualLinks();
         }

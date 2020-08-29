@@ -21,7 +21,7 @@ public class AllPages {
         final By footerLocator = By.xpath("/html/body/section[@id='footer']");
 
         try {
-            ContextOfTest.actor.waitForBrowser(5000);
+            ContextOfTest.actor.waitForBrowser(10000);
         } catch (TimeoutException e) {
             Assert.fail("The page did not fully load (Browser never said 'ready' in 5000ms");
         }
