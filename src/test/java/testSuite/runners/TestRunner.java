@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         strict = true,
-        features = "src/test/features", // a file path to the root of all features
+        features = "src/test/features/SUT", // a file path to the root of all features
         glue = { // a list of package names, not directly related to file paths
                 "testFramework", // the @Before and @After will not be run unless the package containing them is listed here
                 "testSteps"
@@ -19,7 +19,7 @@ import org.junit.runner.RunWith;
                 // see https://gitlab.com/monochromata-de/cucumber-reporting-plugin
                 "de.monochromata.cucumber.report.PrettyReports:target/"
         }
-        , tags = "@function and not @wip"
+        , tags = "@standards and not (@wip or @smoke)"
 //        ,dryRun = true
 )
 

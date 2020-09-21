@@ -18,6 +18,6 @@ public class HtmlSyntaxCheckSteps {
 
     @Then("the w3c HTML tester reports compliance")
     public void theW3CHTMLTesterReportsCompliance() {
-        Assert.assertTrue("File :" + this.url + ": should be syntactically acceptable", w3cHtmlValidator.fileValidates());
+        Assert.assertTrue("This :" + this.url + ": (unescaped) should be syntactically acceptable", w3cHtmlValidator.fileValidates());
     }
 }

@@ -15,16 +15,19 @@ public class W3cHtmlChecker {
      * It is best to aim this directly at the single files that you create.
      * For example, Bootstrap's css invokes error messages (false negatives?) from this tester.
      *
-     * @param urlOfCssFile - make it a single file.Scheme is not necessary
+     * @param urlOfHtmlFile - make it a single file.Scheme is not necessary
      */
-    public W3cHtmlChecker(String urlOfCssFile) {
+    public W3cHtmlChecker(String urlOfHtmlFile) {
         sut = "https://html5.validator.nu/?doc=";
-        sut += urlOfCssFile;
+        sut += urlOfHtmlFile;
         sut += "&parser=html";
 
         Context.defaultActor.getResource(sut);
 
-        new WebDriverWait(Context.driver, Duration.ofSeconds(20)).until(ExpectedConditions.titleContains("results for "));
+        new WebDriverWait(Context.driver, Duration.ofSeconds(20)).
+                until(ExpectedConditions.presenceOfElementLocated(By.className("details"))
+//                until(ExpectedConditions.titleContains("results for ")
+                );
     }
 
     /**
