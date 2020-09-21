@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>koalata-software.com</groupId>
-    <artifactId>UITest</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>com.koalateasoftware</groupId>
+    <artifactId>cucumber_frame</artifactId>
+    <version>0.1</version>
 
     <!-- see https://github.com/cucumber/cucumber-java-skeleton/blob/master/pom.xml -->
     <properties>
@@ -25,6 +25,7 @@
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>${cucumber.version}</version>
+            <scope>test</scope>
         </dependency>
         <!-- Needed for test runners -->
         <dependency>
@@ -79,14 +80,6 @@
             <version>20190722</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>7.1.0</version>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -104,4 +97,5 @@
 
         </plugins>
     </build>
+
 </project>
