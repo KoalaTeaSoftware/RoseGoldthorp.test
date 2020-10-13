@@ -14,16 +14,18 @@ public class W3cCssChecker {
      *
      * @param urlOfCssFile - make it a single file.Scheme is not necessary
      */
-    public W3cCssChecker(String urlOfCssFile) {
+    public W3cCssChecker(String urlOfCssFile, Duration tout) {
         String fullUrl = "http://jigsaw.w3.org/css-validator/validator?uri=";
         fullUrl += urlOfCssFile;
+        //noinspection SpellCheckingInspection
         fullUrl += "&profile=css3svg&usermedium=all&warning=1&vextwarning=";
 
         Context.defaultActor.getResource(fullUrl);
 
-        new WebDriverWait(Context.driver, Duration.ofSeconds(30))
+        new WebDriverWait(Context.driver, tout)
                 // use the 'presence', i.e. is the element actually in the DOM - it may not be visible
                 .until(ExpectedConditions.titleContains("W3C CSS Validator results for "));
+
     }
 
     /**

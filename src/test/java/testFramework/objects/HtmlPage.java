@@ -3,44 +3,25 @@ package testFramework.objects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import testFramework.Context;
 import testFramework.actors.Actor;
+
+import java.time.Duration;
 
 public class HtmlPage {
     public String readPageTitle() {
         return myDriver.getTitle();
     }
 
-    public String readCurrentUrl() {
-        return myDriver.getCurrentUrl();
-    }
-
-    public WebElement getBodyTag() {
-        return bodyTag;
-    }
-
     public HtmlPage(WebDriver driver) {
         this.myDriver = driver;
-
-        waitForJavaScriptReadyStateComplete(Context.pageLoadWait);
-        bodyTag = waitForElement(driver, By.tagName("BODY"), Context.pageLoadWait);
-
-        // this would be where you would initialise the page factory
-        // PageFactory.initElements(driver, this);
-    }
-
-    public static WebElement waitForElement(WebDriver myDriver, By givenBy, long waitFor) {
-        // https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/support/ui/WebDriverWait.html#WebDriverWait-org.openqa.selenium.WebDriver-long-
-        // the above link does not indicate that this particular call is deprecated
-        //noinspection deprecation
-        return new WebDriverWait(myDriver, waitFor)
+        new WebDriverWait(Context.driver, Duration.ofSeconds(Context.pageLoadWait))
                 // use the 'presence', i.e. is the element actually in the DOM - it may not be visible
-                .until(ExpectedConditions.presenceOfElementLocated(givenBy));
+                .until(ExpectedConditions.presenceOfElementLocated(By.tagName("BODY")));
+        waitForJavaScriptReadyStateComplete(Context.pageLoadWait);
     }
-
 
     /**
      * When looking at web pages, the implicit wait may not be sufficient,
@@ -90,6 +71,9 @@ public class HtmlPage {
         }
     }
 
+    public String getFirstHeaderText() {
+        return myDriver.findElement(By.tagName("H1")).getText();
+    }
+
     private final WebDriver myDriver;
-    private final WebElement bodyTag;
 }

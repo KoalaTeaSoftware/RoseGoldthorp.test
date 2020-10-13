@@ -1,5 +1,6 @@
 package testFramework.steps;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
@@ -22,7 +23,11 @@ public class basic {
 
     @Given("I navigate to the page {string}")
     public void iNavigateToThePage(String fullUrl) {
-        Context.defaultActor.getResource(fullUrl);
+        String s = testFramework.helpers.urls.interpretURL(fullUrl);
+        Actor.writeToHtmlReport("Asked for:" + fullUrl);
+        Actor.writeToHtmlReport("Going to :" + fullUrl);
+        Assert.assertNotNull("Unable to make the URL work", s);
+        Context.defaultActor.getResource(s);
     }
 
     @Then("the page title is {string}")
@@ -30,5 +35,21 @@ public class basic {
         HtmlPage page = new HtmlPage(Context.driver);
 
         Assert.assertEquals("The page title is not as expected", expected, page.readPageTitle());
+    }
+
+    @And("the first heading is {string}")
+    public void theFirstHeadingIs(String expected) {
+        HtmlPage page = new HtmlPage(Context.driver);
+        Assert.assertEquals("Unexpected H1", expected, page.getFirstHeaderText());
+    }
+
+    @And("the first heading does not contain {string}")
+    public void theFirstHeadingDoesNotContain(String needle) {
+        HtmlPage page = new HtmlPage(Context.driver);
+        boolean haystackDoesContainNeedle = page.getFirstHeaderText().contains(needle);
+
+        Assert.assertFalse(
+                "The first header " + page.getFirstHeaderText() + ":should not contain :" + needle + ":",
+                haystackDoesContainNeedle);
     }
 }

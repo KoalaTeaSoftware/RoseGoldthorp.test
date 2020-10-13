@@ -89,10 +89,12 @@ ImageIO.write(image, "png", new File("/screenshot.png"));
 
     protected abstract void startService();
 
-    /**
-     * This may never actually be called. The service may just fade away as the test dies
-     */
-    protected abstract void stopService();
+    // --Commented out by Inspection START (11/10/2020 20:28):
+    //    /**
+    //     * This may never actually be called. The service may just fade away as the test dies
+    //     */
+    //    protected abstract void stopService();
+    // --Commented out by Inspection STOP (11/10/2020 20:28)
 
     protected abstract void createDriver();
 
