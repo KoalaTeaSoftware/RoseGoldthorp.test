@@ -25,7 +25,7 @@ public class W3cLinkChecker {
 
         Context.defaultActor.getResource(sut);
 
-        new WebDriverWait(Context.driver, tout).until(ExpectedConditions.presenceOfElementLocated(By.tagName("H3")));
+        new WebDriverWait(Context.defaultDriver, tout).until(ExpectedConditions.presenceOfElementLocated(By.tagName("H3")));
     }
 
     /**
@@ -33,13 +33,14 @@ public class W3cLinkChecker {
      */
     public Boolean fileValidates() {
         // the first h3 tells you the result
-        if (Context.driver.findElement(By.tagName("h3")).getText().toLowerCase().contains("broken links")) {
+        if (Context.defaultDriver.findElement(By.tagName("h3")).getText().toLowerCase().contains("broken links")) {
             // it definitely says there is a problem
             Actor.writeToHtmlReport("Found evidence of broken links (an H3 saying just that)");
+            Actor.writeToHtmlReport(Context.defaultDriver.findElement(By.xpath("//dl[@class='report']")).getAttribute("innerHTML"));
             return false;
         }
         // otherwise, hunt for the p that specifically indicates success
-        for (WebElement p : Context.driver.findElements(By.tagName("p"))) {
+        for (WebElement p : Context.defaultDriver.findElements(By.tagName("p"))) {
             if (p.getText().equalsIgnoreCase("Valid links!"))
                 return true;
         }

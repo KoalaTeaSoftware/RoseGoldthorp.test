@@ -14,7 +14,7 @@ public class Context {
     public static Scenario scenario;
     public static ActorType defaultActorType;
     public static Actor defaultActor;
-    public static WebDriver driver;
+    public static WebDriver defaultDriver;
 
     // these fields are static so that the test steps (which are static) can gain access to them
     public static ConfigReader testConfiguration;

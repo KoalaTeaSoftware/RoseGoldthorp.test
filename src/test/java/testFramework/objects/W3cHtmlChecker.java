@@ -23,7 +23,7 @@ public class W3cHtmlChecker {
 
         Context.defaultActor.getResource(sut);
 
-        new WebDriverWait(Context.driver, tout).
+        new WebDriverWait(Context.defaultDriver, tout).
                 until(ExpectedConditions.presenceOfElementLocated(By.className("details"))
                 );
     }
@@ -39,7 +39,7 @@ public class W3cHtmlChecker {
         <p class="success">The document validates according to the specified schema(s).</p>
          */
         try {
-            resultString = Context.driver.findElement(By.className("success")).getText();
+            resultString = Context.defaultDriver.findElement(By.className("success")).getText();
             if (resultString.contains(" document is valid ")) {
                 return true;
             }
