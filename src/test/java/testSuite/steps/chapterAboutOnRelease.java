@@ -70,10 +70,11 @@ public class chapterAboutOnRelease {
         int idx = 0;
 
         for (WebElement el : getMe().getFilmTitles()) {
+            String visibleText = el.getAttribute("innerText");
             sa.assertTrue(
-                    el.getText().length() > 1,
+                    visibleText.length() > 1,
                     String.format("The title attribute for film number %d is suspiciously short. Value :%s:",
-                            idx, el.getText()
+                            idx, visibleText
                     )
             );
             idx++;
@@ -87,10 +88,11 @@ public class chapterAboutOnRelease {
         int idx = 0;
 
         for (WebElement el : getMe().getFilmPuffs()) {
+            String visibleText = el.getAttribute("innerText");
             sa.assertTrue(
-                    el.getText().length() > 20,
+                    visibleText.length() > 20,
                     String.format("The puff paragraph for film number %d is suspiciously short. Value :%s:",
-                            idx, el.getText()
+                            idx, visibleText
                     )
             );
             idx++;
