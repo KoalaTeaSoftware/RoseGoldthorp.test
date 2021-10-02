@@ -6,13 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="rosegoldthorp.com.test" />
+        <module name="cucumber-frame" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="cucumber_frame" target="1.8" />
-      <module name="rose-goldthorp-test" target="1.8" />
-      <module name="rosegoldthorp.com.test" target="1.8" />
+      <module name="cuckes" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
